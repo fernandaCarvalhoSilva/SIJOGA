@@ -51,5 +51,8 @@ Contributor(s):
     <mapping class="model.Parte"/>
     <mapping class="model.Advogado"/>
     <mapping class="model.Juiz"/>
+    <mapping class="model.Endereco"/>
+    <mapping class="model.Estado"/>
+    <mapping class="model.Cidade"/>
   </session-factory>
 </hibernate-configuration>

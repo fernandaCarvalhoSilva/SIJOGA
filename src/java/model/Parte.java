@@ -17,6 +17,7 @@ import javax.persistence.*;
 public class Parte {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
     
     @ManyToOne

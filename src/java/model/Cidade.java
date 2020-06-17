@@ -5,38 +5,55 @@
  */
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author fernanda
  */
+@Entity()
+@Table(name="cidade")
 public class Cidade {
 
-
-    private Integer codigoCidade;
-    private String ufEstado;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
+    
+    @ManyToOne
+    private Estado estado;
+    
+    @Column
     private String nome;
 
-    public Integer getCodigoCidade() {
-        return codigoCidade;
+    public Long getID() {
+        return ID;
     }
 
-    public void setCodigoCidade(Integer codigoCidade) {
-        this.codigoCidade = codigoCidade;
-    }
-    
-    public String getUfEstado() {
-        return ufEstado;
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
-    public void setUfEstado(String ufEstado) {
-        this.ufEstado = ufEstado;
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String Nome) {
-        this.nome = Nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
+    
+    
 }

@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Arrays;
 import java.util.Base64;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -25,7 +27,6 @@ public class Usuario {
     @Id
     private String cpf;
 
-    
     @Column
     private String sobrenome;
 
@@ -43,6 +44,10 @@ public class Usuario {
     
     @Column
     private String nome;
+    
+    @OneToOne
+    @JoinColumn(name = "endereco_id")   
+    private Endereco endereco;
 
 
     public String getCpf() {

@@ -6,16 +6,28 @@
 package model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author fernanda
  */
+@Entity()
+@Table(name="endereco")
 public class Endereco {
 
-    @Column
-    private String cidade;
+       
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
+    
+    @ManyToOne
+    private Cidade cidade;
 
     @Column
     private String complemento;
@@ -35,14 +47,24 @@ public class Endereco {
     @ManyToOne
     private Estado estado;
 
-    public String getCidade() {
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public Cidade getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
 
+    
+    
     public String getComplemento() {
         return complemento;
     }
