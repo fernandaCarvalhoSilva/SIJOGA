@@ -5,13 +5,22 @@
  */
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 /**
  *
  * @author fernanda
  */
 public class Estado {
 
+    @Id
+    private Long ID;
+
+    @Column
     private String nome;
+
+    @Column
     private String uf;
 
     public String getNome() {

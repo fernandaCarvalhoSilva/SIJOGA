@@ -10,7 +10,8 @@ package model;
  * @author fernanda
  */
 public class Cidade {
-    
+
+
     private Integer codigoCidade;
     private String ufEstado;
     private String nome;

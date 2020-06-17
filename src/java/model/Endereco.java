@@ -5,26 +5,42 @@
  */
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+
 /**
  *
  * @author fernanda
  */
 public class Endereco {
-    
-    private Integer codigoCidade;
+
+    @Column
+    private String cidade;
+
+    @Column
     private String complemento;
+
+    @Column
     private Integer numeroRua;
-    private String ufEstado;
+
+    @Column
     private String bairro;
+
+    @Column
     private String rua;
+
+    @Column
     private String cep;
 
-    public Integer getCodigoCidade() {
-        return codigoCidade;
+    @ManyToOne
+    private Estado estado;
+
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setCodigoCidade(Integer codigoCidade) {
-        this.codigoCidade = codigoCidade;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getComplemento() {
@@ -41,14 +57,6 @@ public class Endereco {
 
     public void setNumeroRua(Integer numeroRua) {
         this.numeroRua = numeroRua;
-    }
-
-    public String getUfEstado() {
-        return ufEstado;
-    }
-
-    public void setUfEstado(String ufEstado) {
-        this.ufEstado = ufEstado;
     }
 
     public String getBairro() {
@@ -73,5 +81,13 @@ public class Endereco {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 }
