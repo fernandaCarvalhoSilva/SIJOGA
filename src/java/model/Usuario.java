@@ -82,10 +82,6 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getHashed_password() {
-        return hashed_password;
-    }
-
     public void setPassword(String password) {
         byte[]salt = Passwords.getNextSalt();
         this.password_salt = Base64.getEncoder().encodeToString(salt);
