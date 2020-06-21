@@ -242,8 +242,6 @@
         <fail unless="dist.dir">Must set dist.dir</fail>
         <fail unless="build.classes.dir">Must set build.classes.dir</fail>
         <fail unless="dist.javadoc.dir">Must set dist.javadoc.dir</fail>
-        <fail unless="build.test.classes.dir">Must set build.test.classes.dir</fail>
-        <fail unless="build.test.results.dir">Must set build.test.results.dir</fail>
         <fail unless="build.classes.excludes">Must set build.classes.excludes</fail>
         <fail unless="dist.war">Must set dist.war</fail>
         <condition property="missing.j2ee.server.home">

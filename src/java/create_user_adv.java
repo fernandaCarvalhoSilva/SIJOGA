@@ -1,5 +1,5 @@
 
-import facade.Facade;
+import boundary.AuthFacade;
 import java.util.Scanner;
 import model.*;
 import org.hibernate.Session;

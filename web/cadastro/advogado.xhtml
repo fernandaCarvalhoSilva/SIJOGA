@@ -1,0 +1,52 @@
+<ui:composition 
+    template="_cadastro_template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:define name="corpo">
+        
+         <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Cadastro de advogado</h1>
+                    </div>
+                       
+                    
+                    <h:form class="formuser" id="formulario" >
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <h:inputText value="#{cadastroAdvogadoBean.nome}" class="form-control" id="txtNome" label="Nome Completo"
+                                    required="true" />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <h:inputText value="#{cadastroAdvogadoBean.email}" class="form-control" id="txtEmail" label="E-mail"
+                                    required="true" />
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <h:inputText value="#{cadastroAdvogadoBean.oab}" class="form-control" id="txtOab" label="OAB"
+                                    required="true" />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <h:inputSecret value="#{cadastroAdvogadoBean.senha}" class="form-control" id="txtSenha" label="senha" required="true" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 text-center">
+                            <h:commandButton class="btn btn-dark" action="#{cadastroAdvogadoBean.signUp}" label="Cadastrar">
+                            </h:commandButton>
+                        </div>
+
+                    </h:form>
+    </ui:define>
+</ui:composition>
