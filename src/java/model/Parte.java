@@ -5,10 +5,33 @@
  */
 package model;
 
+import java.util.List;
+import javax.persistence.*;
+
 /**
  *
  * @author fernanda
  */
-public class Parte extends Usuario {
+@Entity
+@Table(name="parte")
+public class Parte {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
     
+    @ManyToOne
+    @JoinColumn(name="usuario_id")
+    private Usuario usuario;
+    
+    @OneToMany
+    private List<Advogado> advogado;
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
 }

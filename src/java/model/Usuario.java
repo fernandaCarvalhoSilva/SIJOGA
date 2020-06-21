@@ -5,45 +5,57 @@
  */
 package model;
 
+import util.Passwords;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Arrays;
+import java.util.Base64;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 /**
  *
  * @author fernanda
  */
+@Entity()
+@Table(name="usuario")
 public class Usuario {
     
-    private Integer codigoEndereco;
-    private Integer codigoUsuario;
-    private Integer codigoCidade;
-    private String sobrenome;
-    private String uf_estado;
-    private String telefone;
-    private String email;
-    private String senha;
-    private String nome;
+    @Id
     private String cpf;
 
-    public Integer getCodigoEndereco() {
-        return codigoEndereco;
+    @Column
+    private String sobrenome;
+
+    @Column
+    private String telefone;
+    
+    @Column
+    private String email;
+    
+    @Column
+    private String hashed_password;
+
+    @Column
+    private String password_salt;
+    
+    @Column
+    private String nome;
+    
+    @OneToOne
+    @JoinColumn(name = "endereco_id")   
+    private Endereco endereco;
+
+
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCodigoEndereco(Integer codigoEndereco) {
-        this.codigoEndereco = codigoEndereco;
-    }
-
-    public Integer getCodigoUsuario() {
-        return codigoUsuario;
-    }
-
-    public void setCodigoUsuario(Integer codigoUsuario) {
-        this.codigoUsuario = codigoUsuario;
-    }
-
-    public Integer getCodigoCidade() {
-        return codigoCidade;
-    }
-
-    public void setCodigoCidade(Integer codigoCidade) {
-        this.codigoCidade = codigoCidade;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getSobrenome() {
@@ -52,14 +64,6 @@ public class Usuario {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
-    }
-
-    public String getUf_estado() {
-        return uf_estado;
-    }
-
-    public void setUf_estado(String uf_estado) {
-        this.uf_estado = uf_estado;
     }
 
     public String getTelefone() {
@@ -78,13 +82,18 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public void setPassword(String password) {
+        byte[]salt = Passwords.getNextSalt();
+        this.password_salt = Base64.getEncoder().encodeToString(salt);
+        this.hashed_password = Base64.getEncoder().encodeToString(Passwords.hash(password.toCharArray(), password_salt.getBytes()));
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public boolean verifyPassword(String password) {
+        byte[] hashedPasswordBytes = Base64.getDecoder().decode( hashed_password );
+        return Passwords.isExpectedPassword(password.toCharArray(), password_salt.getBytes(), hashedPasswordBytes);
+
     }
+
 
     public String getNome() {
         return nome;
@@ -93,12 +102,4 @@ public class Usuario {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    } 
 }

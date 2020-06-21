@@ -5,14 +5,27 @@
  */
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author fernanda
  */
+@Entity()
+@Table(name="estado")
 public class Estado {
 
-    private String nome;
+    @Id
     private String uf;
+    
+    
+    @Column
+    private String nome;
 
     public String getNome() {
         return nome;
@@ -21,12 +34,15 @@ public class Estado {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    public String getUF() {
+
+    public String getUf() {
         return uf;
     }
 
     public void setUf(String uf) {
         this.uf = uf;
     }
+
+    
+    
 }

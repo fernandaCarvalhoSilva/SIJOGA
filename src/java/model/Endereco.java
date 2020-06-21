@@ -5,28 +5,66 @@
  */
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author fernanda
  */
+@Entity()
+@Table(name="endereco")
 public class Endereco {
+
+       
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
     
-    private Integer codigoCidade;
+    @ManyToOne
+    private Cidade cidade;
+
+    @Column
     private String complemento;
+
+    @Column
     private Integer numeroRua;
-    private String ufEstado;
+
+    @Column
     private String bairro;
+
+    @Column
     private String rua;
+
+    @Column
     private String cep;
 
-    public Integer getCodigoCidade() {
-        return codigoCidade;
+    @ManyToOne
+    private Estado estado;
+
+    public Long getID() {
+        return ID;
     }
 
-    public void setCodigoCidade(Integer codigoCidade) {
-        this.codigoCidade = codigoCidade;
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
+    
+    
     public String getComplemento() {
         return complemento;
     }
@@ -41,14 +79,6 @@ public class Endereco {
 
     public void setNumeroRua(Integer numeroRua) {
         this.numeroRua = numeroRua;
-    }
-
-    public String getUfEstado() {
-        return ufEstado;
-    }
-
-    public void setUfEstado(String ufEstado) {
-        this.ufEstado = ufEstado;
     }
 
     public String getBairro() {
@@ -73,5 +103,13 @@ public class Endereco {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 }
