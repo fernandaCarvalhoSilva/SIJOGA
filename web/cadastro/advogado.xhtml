@@ -3,50 +3,58 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
     <ui:define name="corpo">
-        
-         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Cadastro de advogado</h1>
-                    </div>
-                       
-                    
-                    <h:form class="formuser" id="formulario" >
 
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <h:inputText value="#{cadastroAdvogadoBean.nome}" class="form-control" id="txtNome" label="Nome Completo"
-                                    required="true" />
-                            </div>
-                        </div>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Cadastro de advogado</h1>
+        </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <h:inputText value="#{cadastroAdvogadoBean.email}" class="form-control" id="txtEmail" label="E-mail"
-                                    required="true" />
-                            </div>
 
-                        </div>
+        <h:form class="formuser" id="formulario" >
 
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <h:inputText value="#{cadastroAdvogadoBean.oab}" class="form-control" id="txtOab" label="OAB"
-                                    required="true" />
-                            </div>
-                        </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <h:inputText value="#{cadastroAdvogadoBean.nome}" class="form-control" id="txtNome" a:placeholder="Nome Completo"
+                                 required="true" />
+                </div>
+            </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <h:inputSecret value="#{cadastroAdvogadoBean.senha}" class="form-control" id="txtSenha" label="senha" required="true" />
-                            </div>
-                        </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <h:inputText value="#{cadastroAdvogadoBean.email}" class="form-control" id="txtEmail" a:placeholder="E-mail"
+                                 required="true" />
+                </div>
 
-                        <div class="col-md-3 text-center">
-                            <h:commandButton class="btn btn-dark" action="#{cadastroAdvogadoBean.signUp}" label="Cadastrar">
-                            </h:commandButton>
-                        </div>
+            </div>
 
-                    </h:form>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <h:inputText value="#{cadastroAdvogadoBean.oab}" class="form-control" id="txtOab" a:placeholder="OAB"
+                                 required="true" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <h:inputText value="#{cadastroAdvogadoBean.cpf}" class="form-control" id="txtCpf" a:placeholder="CPF"
+                                 required="true" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <h:inputSecret value="#{cadastroAdvogadoBean.senha}" class="form-control" id="txtSenha" a:placeholder="senha" required="true" />
+                </div>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <h:commandButton class="btn btn-dark" action="#{cadastroAdvogadoBean.signUp}" value="Cadastrar">
+                </h:commandButton>
+            </div>
+
+        </h:form>
     </ui:define>
 </ui:composition>

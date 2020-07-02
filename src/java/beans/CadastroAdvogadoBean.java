@@ -1,13 +1,8 @@
 package beans;
 
-
 import boundary.AuthFacade;
 import java.io.Serializable;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
-import javax.inject.Inject;
-import javax.inject.Named;
 import model.Usuario;
 
 /*
@@ -15,44 +10,40 @@ import model.Usuario;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author brend
  */
-
-@ManagedBean(name="cadastroAdvogadoBean")
+@ManagedBean(name = "cadastroAdvogadoBean")
 public class CadastroAdvogadoBean implements Serializable {
+
     public String nome;
     public String email;
     public String oab;
+    public String cpf;
     public String senha;
-    
-    
-    @EJB
-    AuthFacade auth;
-    
-       
-    public boolean signUp( ) {
+
+
+    public boolean signUp() {
         
-        
+
         System.out.println("HELLO!!!!!!!!");
-        
         Usuario user = new Usuario();
-        
+
         user.setEmail(email);
         user.setPassword(senha);
+        user.setCpf(cpf);
         
         try {
-            auth.create(user);
-        } catch(NullPointerException e) {
+        AuthFacade.getAuthFacade().create(user);
+        } catch (NullPointerException e) {
             System.out.println(e);
         }
-        
-        return true;
-        
-    }
 
+        return true;
+
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -77,6 +68,14 @@ public class CadastroAdvogadoBean implements Serializable {
         this.oab = oab;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     public String getSenha() {
         return senha;
     }
@@ -84,5 +83,5 @@ public class CadastroAdvogadoBean implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
 }

@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package boundary;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import model.*;
+
 /**
  *
  * @author brend
@@ -17,13 +18,21 @@ import model.*;
 
 @Stateless
 public class AuthFacade extends AbstractFacade<Usuario> {
-    
-    EntityManager em;
-     
-    
-    
+
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("teste");
+
+    private static AuthFacade INSTANCE;
+
+    public static AuthFacade getAuthFacade() {
+        if (INSTANCE == null) {
+            INSTANCE = new AuthFacade();
+        }
+        return INSTANCE;
+    }
+
     @Override
     protected EntityManager getEntityManager() {
+        EntityManager em = emf.createEntityManager();
         return em;
     }
 
@@ -38,7 +47,7 @@ public class AuthFacade extends AbstractFacade<Usuario> {
 //        emf.close();
 //        return usuario;
 //    }
-    
+
 //    public Usuario loginUsuario ( Usuario usuario )  {
 //        em.getTransaction().begin();
 //        em.merge(usuario);
@@ -46,6 +55,4 @@ public class AuthFacade extends AbstractFacade<Usuario> {
 //        emf.close();
 //        return usuario;
 //    }
-
-    
 }
