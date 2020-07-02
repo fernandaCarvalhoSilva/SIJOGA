@@ -7,23 +7,36 @@ package boundary;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
-/**
- *
- * @author Bext
- */
+
 public abstract class AbstractFacade<T> {
 
     private Class<T> entityClass;
+    private EntityManager em;
+    private EntityTransaction tr;
 
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
     protected abstract EntityManager getEntityManager();
-
+    
     public void create(T entity) {
-        getEntityManager().persist(entity);
+        try{
+            this.em = getEntityManager();
+            this.tr = em.getTransaction();
+            tr.begin();
+            em.persist(entity);
+            tr.commit();
+            
+        } catch(Exception e) {
+           e.printStackTrace();
+           tr.rollback();
+        } finally {
+            if(em.isOpen())
+                em.close();
+        }
     }
 
     public void edit(T entity) {
