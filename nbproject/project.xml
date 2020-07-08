@@ -11,11 +11,7 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-<<<<<<< HEAD
                     <file>${libs.MySQLDriver.classpath}</file>
-=======
-                    <file>${file.reference.mysql-connector-java-5.1.5.jar}</file>
->>>>>>> fec2e42... Ajustes
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
